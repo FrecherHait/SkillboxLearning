@@ -1,6 +1,8 @@
 #include "ModuleThreeOne.h"
 #include <iostream>
 ModuleThreeOne::ModuleThreeOne() {
+	setlocale(LC_ALL, "rus");
+
 	totalPassengers = 0;
 	totalMoney      = 0;
 	inPassengers    = 0;
