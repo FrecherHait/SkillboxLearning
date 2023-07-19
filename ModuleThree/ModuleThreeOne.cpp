@@ -15,73 +15,73 @@ ModuleThreeOne::ModuleThreeOne() {
 
 void ModuleThreeOne::run() {
 
-	stop = "Óëèöà ïðîãðàììèñòîâ";
+	stop = "Улица программистов";
 
-	std::cout << "Ïðèáûâàåì íà îñòàíîâêó \"" << stop << "\". Â ñàëîíå ïàññàæèðîâ: " << totalPassengers << "\n";
-	std::cout << "Ââåäèòå êîëè÷åñòâî âîøåäùèõ ïàññàæèðîâ: ";
+	std::cout << "Прибываем на остановку \"" << stop << "\". В салоне пассажиров: " << totalPassengers << "\n";
+	std::cout << "Введите количество вошедщих пассажиров: ";
 	std::cin  >> inPassengers;
 
-	std::cout << "Ââåäèòå êîëè÷åñòâî âûøåäøèõ ïàññàæèðîâ: ";
+	std::cout << "Введите количество вышедших пассажиров: ";
 	std::cin  >> outPassengers;
 
 	totalPassengers += inPassengers;
 	totalPassengers -= outPassengers;
 	totalMoney      += inPassengers * 20;
 
-	std::cout << "Ñêîëüêî ïàññàæèðîâ âûøëî? " << outPassengers << "\n";
-	std::cout << "Ñêîëüêî ïàññàæèðîâ çàøëî íà îñòàíîâêå? " << inPassengers << "\n";
-	std::cout << "Îòïðàâëÿåìñÿ ñ îñòàíîâêè \"" << stop << "\". Â ñàëîíå ïàññàæèðîâ: " << totalPassengers << "\n";
-	std::cout << "-----------Åäåì---------\n\n";
+	std::cout << "Сколько пассажиров вышло? " << outPassengers << "\n";
+	std::cout << "Сколько пассажиров зашло на остановке? " << inPassengers << "\n";
+	std::cout << "Отправляемся с остановки \"" << stop << "\". В салоне пассажиров: " << totalPassengers << "\n";
+	std::cout << "-----------Едем---------\n\n";
 
-	stop = "Ïðîñïåêò àëãîðèòìîâ";
+	stop = "Проспект алгоритмов";
 
-	std::cout << "Ïðèáûâàåì íà îñòàíîâêó \"" << stop << "\". Â ñàëîíå ïàññàæèðîâ: " << totalPassengers << "\n";
-	std::cout << "Ââåäèòå êîëè÷åñòâî âîøåäùèõ ïàññàæèðîâ: ";
+	std::cout << "Прибываем на остановку \"" << stop << "\". В салоне пассажиров: " << totalPassengers << "\n";
+	std::cout << "Введите количество вошедщих пассажиров: ";
 	std::cin  >> inPassengers;
 
-	std::cout << "Ââåäèòå êîëè÷åñòâî âûøåäøèõ ïàññàæèðîâ: ";
+	std::cout << "Введите количество вышедших пассажиров: ";
 	std::cin  >> outPassengers;
 
 	totalPassengers += inPassengers;
 	totalPassengers -= outPassengers;
 	totalMoney      += inPassengers * 20;
 
-	std::cout << "Ñêîëüêî ïàññàæèðîâ âûøëî? " << outPassengers << "\n";
-	std::cout << "Ñêîëüêî ïàññàæèðîâ çàøëî íà îñòàíîâêå? " << inPassengers << "\n";
-	std::cout << "Îòïðàâëÿåìñÿ ñ îñòàíîâêè \"" << stop << "\". Â ñàëîíå ïàññàæèðîâ: " << totalPassengers << "\n";
-	std::cout << "-----------Åäåì---------\n\n";
+	std::cout << "Сколько пассажиров вышло? " << outPassengers << "\n";
+	std::cout << "Сколько пассажиров зашло на остановке? " << inPassengers << "\n";
+	std::cout << "Отправляемся с остановки \"" << stop << "\". В салоне пассажиров: " << totalPassengers << "\n";
+	std::cout << "-----------Едем---------\n\n";
 
-	stop = "Óíèâåðñèòåò ÓëÃÓ";
+	stop = "Университет УлГУ";
 
-	std::cout << "Ïðèáûâàåì íà îñòàíîâêó \"" << stop << "\". Â ñàëîíå ïàññàæèðîâ: " << totalPassengers << "\n";
-	std::cout << "Ââåäèòå êîëè÷åñòâî âîøåäùèõ ïàññàæèðîâ: ";
+	std::cout << "Прибываем на остановку \"" << stop << "\". В салоне пассажиров: " << totalPassengers << "\n";
+	std::cout << "Введите количество вошедщих пассажиров: ";
 	std::cin  >> inPassengers;
 
-	std::cout << "Ââåäèòå êîëè÷åñòâî âûøåäøèõ ïàññàæèðîâ: ";
+	std::cout << "Введите количество вышедших пассажиров: ";
 	std::cin  >> outPassengers;
 
 	totalPassengers += inPassengers;
 	totalPassengers -= outPassengers;
 	totalMoney      += inPassengers * 20;
 
-	std::cout << "Ñêîëüêî ïàññàæèðîâ âûøëî? " << outPassengers << "\n";
-	std::cout << "Ñêîëüêî ïàññàæèðîâ çàøëî íà îñòàíîâêå? " << inPassengers << "\n";
-	std::cout << "Îòïðàâëÿåìñÿ ñ îñòàíîâêè \"" << stop << "\". Â ñàëîíå ïàññàæèðîâ: " << totalPassengers << "\n";
-	std::cout << "-----------Åäåì---------\n\n";
+	std::cout << "Сколько пассажиров вышло? " << outPassengers << "\n";
+	std::cout << "Сколько пассажиров зашло на остановке? " << inPassengers << "\n";
+	std::cout << "Отправляемся с остановки \"" << stop << "\". В салоне пассажиров: " << totalPassengers << "\n";
+	std::cout << "-----------Едем---------\n\n";
 
-	stop = "Ïðîñïåêò Ãàÿ";
+	stop = "Проспект Гая";
 
-	std::cout << "Ïðèáûâàåì íà êîíå÷íóþ îñòàíîâêó \"" << stop << "\". Â ñàëîíå ïàññàæèðîâ: " << totalPassengers << "\n";
+	std::cout << "Прибываем на конечную остановку \"" << stop << "\". В салоне пассажиров: " << totalPassengers << "\n";
 
-	//Çäåñü ÿ îïèðàëñÿ íà ãàðàíòèðîâàííûé âûõîä âñåõ ïàññàæèðîâ íà êîíå÷íîé îñòàíîâêå
+	//Здесь я опирался на гарантированный выход всех пассажиров на конечной остановке
 	inPassengers     = 0;
 	outPassengers    = totalPassengers;
 	totalPassengers -= totalPassengers;
 
-	std::cout << "Ñêîëüêî ïàññàæèðîâ âûøëî? " << outPassengers << "\n";
-	std::cout << "Ñêîëüêî ïàññàæèðîâ çàøëî íà îñòàíîâêå? " << inPassengers << "\n";
-	std::cout << "Â ñàëîíå ïàññàæèðîâ : " << totalPassengers << "\n";
-	std::cout << "-----------Êîíå÷íàÿ---------\n\n";
+	std::cout << "Сколько пассажиров вышло? " << outPassengers << "\n";
+	std::cout << "Сколько пассажиров зашло на остановке? " << inPassengers << "\n";
+	std::cout << "В салоне пассажиров : " << totalPassengers << "\n";
+	std::cout << "-----------Конечная---------\n\n";
 
 	salaryDriver = totalMoney / 4;
 	fuel         = totalMoney / 5;
@@ -89,12 +89,12 @@ void ModuleThreeOne::run() {
 	repair       = totalMoney / 5;
 	profit       = totalMoney - (salaryDriver + fuel + taxes + repair);
 
-	std::cout << "Âñåãî çàðàáîòàëè: "         << totalMoney << "\n";
-	std::cout << "Çàðïëàòà âîäèòåëÿ: "        << salaryDriver << "\n";
-	std::cout << "Ðàñõîäû íà òîïëèâî: "       << fuel << "\n";
-	std::cout << "Íàëîãè: "                   << taxes << "\n";
-	std::cout << "Ðàñõîäû íà ðåìîíò ìàøèíû: " << repair << "\n";
-	std::cout << "Èòîãî äîõîä: "              << profit << "\n";
+	std::cout << "Всего заработали: "         << totalMoney << "\n";
+	std::cout << "Зарплата водителя: "        << salaryDriver << "\n";
+	std::cout << "Расходы на топливо: "       << fuel << "\n";
+	std::cout << "Налоги: "                   << taxes << "\n";
+	std::cout << "Расходы на ремонт машины: " << repair << "\n";
+	std::cout << "Итого доход: "              << profit << "\n";
 }
 
 ModuleThreeOne::~ModuleThreeOne() {

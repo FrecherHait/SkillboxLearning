@@ -13,10 +13,10 @@ void ModuleThreeThree::run() {
 	nightFade   = 20;
 	totalHeight = beginHeight + (dailyGrowth - nightFade) * 2 + dailyGrowth / 2;
 
-	std::cout << "Íà÷àëüíàÿ âûñîòà áàìáóêà: "                          << beginHeight << "\n";
-	std::cout << "Ðàçìåð ñúåäàåìîãî ãóñåíèöàìè áàìáóêà çà îäíó íî÷ü: " << nightFade   << "\n";
-	std::cout << "Eæåäíåâíûé ðîñò áàìáóêà: "                           << dailyGrowth << "\n";
-	std::cout << "Âûñîòà áàìáóêà ê ñåðåäèíå òðåòüåãî äíÿ: "            << totalHeight << "\n";
+	std::cout << "ÐÐ°Ñ‡Ð°Ð»ÑŒÐ½Ð°Ñ Ð²Ñ‹ÑÐ¾Ñ‚Ð° Ð±Ð°Ð¼Ð±ÑƒÐºÐ°: "                          << beginHeight << "\n";
+	std::cout << "Ð Ð°Ð·Ð¼ÐµÑ€ ÑÑŠÐµÐ´Ð°ÐµÐ¼Ð¾Ð³Ð¾ Ð³ÑƒÑÐµÐ½Ð¸Ñ†Ð°Ð¼Ð¸ Ð±Ð°Ð¼Ð±ÑƒÐºÐ° Ð·Ð° Ð¾Ð´Ð½Ñƒ Ð½Ð¾Ñ‡ÑŒ: " << nightFade   << "\n";
+	std::cout << "EÐ¶ÐµÐ´Ð½ÐµÐ²Ð½Ñ‹Ð¹ Ñ€Ð¾ÑÑ‚ Ð±Ð°Ð¼Ð±ÑƒÐºÐ°: "                           << dailyGrowth << "\n";
+	std::cout << "Ð’Ñ‹ÑÐ¾Ñ‚Ð° Ð±Ð°Ð¼Ð±ÑƒÐºÐ° Ðº ÑÐµÑ€ÐµÐ´Ð¸Ð½Ðµ Ñ‚Ñ€ÐµÑ‚ÑŒÐµÐ³Ð¾ Ð´Ð½Ñ: "            << totalHeight << "\n";
 }
 
 ModuleThreeThree::~ModuleThreeThree() {
