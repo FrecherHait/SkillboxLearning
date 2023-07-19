@@ -1,8 +1,6 @@
 #include "ModuleThreeOne.h"
 #include <iostream>
 ModuleThreeOne::ModuleThreeOne() {
-	setlocale(LC_ALL, "rus");
-
 	totalPassengers = 0;
 	totalMoney      = 0;
 	inPassengers    = 0;
@@ -17,73 +15,73 @@ ModuleThreeOne::ModuleThreeOne() {
 
 void ModuleThreeOne::run() {
 
-	stop = "Улица программистов";
+	stop = "Г“Г«ГЁГ¶Г  ГЇГ°Г®ГЈГ°Г Г¬Г¬ГЁГ±ГІГ®Гў";
 
-	std::cout << "Прибываем на остановку \"" << stop << "\". В салоне пассажиров: " << totalPassengers << "\n";
-	std::cout << "Введите количество вошедщих пассажиров: ";
+	std::cout << "ГЏГ°ГЁГЎГ»ГўГ ГҐГ¬ Г­Г  Г®Г±ГІГ Г­Г®ГўГЄГі \"" << stop << "\". Г‚ Г±Г Г«Г®Г­ГҐ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў: " << totalPassengers << "\n";
+	std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГўГ®ГёГҐГ¤Г№ГЁГµ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў: ";
 	std::cin  >> inPassengers;
 
-	std::cout << "Введите количество вышедших пассажиров: ";
+	std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГўГ»ГёГҐГ¤ГёГЁГµ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў: ";
 	std::cin  >> outPassengers;
 
 	totalPassengers += inPassengers;
 	totalPassengers -= outPassengers;
 	totalMoney      += inPassengers * 20;
 
-	std::cout << "Сколько пассажиров вышло? " << outPassengers << "\n";
-	std::cout << "Сколько пассажиров зашло на остановке? " << inPassengers << "\n";
-	std::cout << "Отправляемся с остановки \"" << stop << "\". В салоне пассажиров: " << totalPassengers << "\n";
-	std::cout << "-----------Едем---------\n\n";
+	std::cout << "Г‘ГЄГ®Г«ГјГЄГ® ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў ГўГ»ГёГ«Г®? " << outPassengers << "\n";
+	std::cout << "Г‘ГЄГ®Г«ГјГЄГ® ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў Г§Г ГёГ«Г® Г­Г  Г®Г±ГІГ Г­Г®ГўГЄГҐ? " << inPassengers << "\n";
+	std::cout << "ГЋГІГЇГ°Г ГўГ«ГїГҐГ¬Г±Гї Г± Г®Г±ГІГ Г­Г®ГўГЄГЁ \"" << stop << "\". Г‚ Г±Г Г«Г®Г­ГҐ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў: " << totalPassengers << "\n";
+	std::cout << "-----------Г…Г¤ГҐГ¬---------\n\n";
 
-	stop = "Проспект алгоритмов";
+	stop = "ГЏГ°Г®Г±ГЇГҐГЄГІ Г Г«ГЈГ®Г°ГЁГІГ¬Г®Гў";
 
-	std::cout << "Прибываем на остановку \"" << stop << "\". В салоне пассажиров: " << totalPassengers << "\n";
-	std::cout << "Введите количество вошедщих пассажиров: ";
+	std::cout << "ГЏГ°ГЁГЎГ»ГўГ ГҐГ¬ Г­Г  Г®Г±ГІГ Г­Г®ГўГЄГі \"" << stop << "\". Г‚ Г±Г Г«Г®Г­ГҐ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў: " << totalPassengers << "\n";
+	std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГўГ®ГёГҐГ¤Г№ГЁГµ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў: ";
 	std::cin  >> inPassengers;
 
-	std::cout << "Введите количество вышедших пассажиров: ";
+	std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГўГ»ГёГҐГ¤ГёГЁГµ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў: ";
 	std::cin  >> outPassengers;
 
 	totalPassengers += inPassengers;
 	totalPassengers -= outPassengers;
 	totalMoney      += inPassengers * 20;
 
-	std::cout << "Сколько пассажиров вышло? " << outPassengers << "\n";
-	std::cout << "Сколько пассажиров зашло на остановке? " << inPassengers << "\n";
-	std::cout << "Отправляемся с остановки \"" << stop << "\". В салоне пассажиров: " << totalPassengers << "\n";
-	std::cout << "-----------Едем---------\n\n";
+	std::cout << "Г‘ГЄГ®Г«ГјГЄГ® ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў ГўГ»ГёГ«Г®? " << outPassengers << "\n";
+	std::cout << "Г‘ГЄГ®Г«ГјГЄГ® ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў Г§Г ГёГ«Г® Г­Г  Г®Г±ГІГ Г­Г®ГўГЄГҐ? " << inPassengers << "\n";
+	std::cout << "ГЋГІГЇГ°Г ГўГ«ГїГҐГ¬Г±Гї Г± Г®Г±ГІГ Г­Г®ГўГЄГЁ \"" << stop << "\". Г‚ Г±Г Г«Г®Г­ГҐ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў: " << totalPassengers << "\n";
+	std::cout << "-----------Г…Г¤ГҐГ¬---------\n\n";
 
-	stop = "Университет УлГУ";
+	stop = "Г“Г­ГЁГўГҐГ°Г±ГЁГІГҐГІ Г“Г«ГѓГ“";
 
-	std::cout << "Прибываем на остановку \"" << stop << "\". В салоне пассажиров: " << totalPassengers << "\n";
-	std::cout << "Введите количество вошедщих пассажиров: ";
+	std::cout << "ГЏГ°ГЁГЎГ»ГўГ ГҐГ¬ Г­Г  Г®Г±ГІГ Г­Г®ГўГЄГі \"" << stop << "\". Г‚ Г±Г Г«Г®Г­ГҐ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў: " << totalPassengers << "\n";
+	std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГўГ®ГёГҐГ¤Г№ГЁГµ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў: ";
 	std::cin  >> inPassengers;
 
-	std::cout << "Введите количество вышедших пассажиров: ";
+	std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГўГ»ГёГҐГ¤ГёГЁГµ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў: ";
 	std::cin  >> outPassengers;
 
 	totalPassengers += inPassengers;
 	totalPassengers -= outPassengers;
 	totalMoney      += inPassengers * 20;
 
-	std::cout << "Сколько пассажиров вышло? " << outPassengers << "\n";
-	std::cout << "Сколько пассажиров зашло на остановке? " << inPassengers << "\n";
-	std::cout << "Отправляемся с остановки \"" << stop << "\". В салоне пассажиров: " << totalPassengers << "\n";
-	std::cout << "-----------Едем---------\n\n";
+	std::cout << "Г‘ГЄГ®Г«ГјГЄГ® ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў ГўГ»ГёГ«Г®? " << outPassengers << "\n";
+	std::cout << "Г‘ГЄГ®Г«ГјГЄГ® ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў Г§Г ГёГ«Г® Г­Г  Г®Г±ГІГ Г­Г®ГўГЄГҐ? " << inPassengers << "\n";
+	std::cout << "ГЋГІГЇГ°Г ГўГ«ГїГҐГ¬Г±Гї Г± Г®Г±ГІГ Г­Г®ГўГЄГЁ \"" << stop << "\". Г‚ Г±Г Г«Г®Г­ГҐ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў: " << totalPassengers << "\n";
+	std::cout << "-----------Г…Г¤ГҐГ¬---------\n\n";
 
-	stop = "Проспект Гая";
+	stop = "ГЏГ°Г®Г±ГЇГҐГЄГІ ГѓГ Гї";
 
-	std::cout << "Прибываем на конечную остановку \"" << stop << "\". В салоне пассажиров: " << totalPassengers << "\n";
+	std::cout << "ГЏГ°ГЁГЎГ»ГўГ ГҐГ¬ Г­Г  ГЄГ®Г­ГҐГ·Г­ГіГѕ Г®Г±ГІГ Г­Г®ГўГЄГі \"" << stop << "\". Г‚ Г±Г Г«Г®Г­ГҐ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў: " << totalPassengers << "\n";
 
-	//Здесь я опирался на гарантированный выход всех пассажиров на конечной остановке
+	//Г‡Г¤ГҐГ±Гј Гї Г®ГЇГЁГ°Г Г«Г±Гї Г­Г  ГЈГ Г°Г Г­ГІГЁГ°Г®ГўГ Г­Г­Г»Г© ГўГ»ГµГ®Г¤ ГўГ±ГҐГµ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў Г­Г  ГЄГ®Г­ГҐГ·Г­Г®Г© Г®Г±ГІГ Г­Г®ГўГЄГҐ
 	inPassengers     = 0;
 	outPassengers    = totalPassengers;
 	totalPassengers -= totalPassengers;
 
-	std::cout << "Сколько пассажиров вышло? " << outPassengers << "\n";
-	std::cout << "Сколько пассажиров зашло на остановке? " << inPassengers << "\n";
-	std::cout << "В салоне пассажиров : " << totalPassengers << "\n";
-	std::cout << "-----------Конечная---------\n\n";
+	std::cout << "Г‘ГЄГ®Г«ГјГЄГ® ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў ГўГ»ГёГ«Г®? " << outPassengers << "\n";
+	std::cout << "Г‘ГЄГ®Г«ГјГЄГ® ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў Г§Г ГёГ«Г® Г­Г  Г®Г±ГІГ Г­Г®ГўГЄГҐ? " << inPassengers << "\n";
+	std::cout << "Г‚ Г±Г Г«Г®Г­ГҐ ГЇГ Г±Г±Г Г¦ГЁГ°Г®Гў : " << totalPassengers << "\n";
+	std::cout << "-----------ГЉГ®Г­ГҐГ·Г­Г Гї---------\n\n";
 
 	salaryDriver = totalMoney / 4;
 	fuel         = totalMoney / 5;
@@ -91,12 +89,12 @@ void ModuleThreeOne::run() {
 	repair       = totalMoney / 5;
 	profit       = totalMoney - (salaryDriver + fuel + taxes + repair);
 
-	std::cout << "Всего заработали: "         << totalMoney << "\n";
-	std::cout << "Зарплата водителя: "        << salaryDriver << "\n";
-	std::cout << "Расходы на топливо: "       << fuel << "\n";
-	std::cout << "Налоги: "                   << taxes << "\n";
-	std::cout << "Расходы на ремонт машины: " << repair << "\n";
-	std::cout << "Итого доход: "              << profit << "\n";
+	std::cout << "Г‚Г±ГҐГЈГ® Г§Г Г°Г ГЎГ®ГІГ Г«ГЁ: "         << totalMoney << "\n";
+	std::cout << "Г‡Г Г°ГЇГ«Г ГІГ  ГўГ®Г¤ГЁГІГҐГ«Гї: "        << salaryDriver << "\n";
+	std::cout << "ГђГ Г±ГµГ®Г¤Г» Г­Г  ГІГ®ГЇГ«ГЁГўГ®: "       << fuel << "\n";
+	std::cout << "ГЌГ Г«Г®ГЈГЁ: "                   << taxes << "\n";
+	std::cout << "ГђГ Г±ГµГ®Г¤Г» Г­Г  Г°ГҐГ¬Г®Г­ГІ Г¬Г ГёГЁГ­Г»: " << repair << "\n";
+	std::cout << "Г€ГІГ®ГЈГ® Г¤Г®ГµГ®Г¤: "              << profit << "\n";
 }
 
 ModuleThreeOne::~ModuleThreeOne() {
