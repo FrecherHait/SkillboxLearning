@@ -102,43 +102,49 @@ void objectiveFifth() {
 }
 
 void objectiveSixth() {
-	int men;
-	int barbers;
-	int requiredBarbersCount;
+	int menCount;
+	int barbersCount;
+	int shiftTimePerMonth;
 
-	std::cout << "Введите число мужчин: ";
-	std::cin >> men;
+	std::cout << "************** Барбершоп-калькулятор **************\n";
+	std::cout << "Введите число мужчин в городе: ";
+	std::cin >> menCount;
 
-	std::cout << "Введите число барберов: ";
-	std::cin >> barbers;
+	std::cout << "Сколько уже барберов удалось нанять? ";
+	std::cin >> barbersCount;
 
-	// я решил не заводить переменных под 8-часовую смену и 30 рабочим дням в месяц
-	// так как они в условии задачи, являются константами
-	//requiredBarbersCount = men / (8 * 30);
-
-
+	// Сколько человек может постричь один барбер за одну смену?
 	int mansPerBarber = 8; // один человек в час, смена 8 часов
+
 	// Сколько человек успеет постричь барбер за месяц?
 	int mansPerBarberPerMonth = mansPerBarber * 30;
+
 	std::cout << "Один барбер стрижет столько клиентов в месяц " << mansPerBarberPerMonth << "\n";
 
-	// Сколько нужно барберов, чтобы постричь mansCount человек?
-	requiredBarbersCount = men /  mansPerBarberPerMonth;
-	
-	if (requiredBarbersCount * mansPerBarberPerMonth < men) {
+	int requiredBarbersCount = menCount / mansPerBarberPerMonth;
+
+	shiftTimePerMonth = menCount % mansPerBarberPerMonth;
+
+	if (shiftTimePerMonth != 0) {
 		requiredBarbersCount += 1;
 	}
-	
+
 	std::cout << "Необходимое число барберов: " << requiredBarbersCount << "\n";
 
-	if (requiredBarbersCount < 1) {
-		std::cout << "Барберов хватает.";
+	// Сколько человек успеют посчтричь requiredBarbersCount за месяц?
+	std::cout << requiredBarbersCount << " барбера могут постричь "
+		      << requiredBarbersCount * mansPerBarberPerMonth << " мужчин за месяц.\n";
+
+	// Сравниваем с количеством имеющихся барберов
+	if (requiredBarbersCount > barbersCount) {
+		std::cout << "Нужно больше барберов!!!\n";
 	}
-	else if (requiredBarbersCount == 1 && men % (barbers * mansPerBarberPerMonth) == 0) {
-		std::cout << "Барберов ровно столько сколько нужно.";
+	else if (requiredBarbersCount == barbersCount) {
+		std::cout << "Барберов ровно столько, сколько нужно!!!\n";
 	}
-	else {
-		std::cout << "Нихуя барберов не хватит!";
+
+	if (barbersCount > requiredBarbersCount * 2) {
+		std::cout << "У вас работает в два раза больше барберов, чем это нужно!!!\n";
 	}
 }
 
@@ -154,52 +160,126 @@ void objectiveSeventh() {
 
 	std::cout << "Меню сегодня(" << dayForWeek[numberDayForWeek - 1] << "):\n";
 
-	switch (numberDayForWeek) {
-		std::cout << "\n";
-	case 1:
+	if (numberDayForWeek == 1) {
 		std::cout << "Борщ" << "\n"
-			      << "Салат \"Оливье\"" << "\n"
-			      << "Макароны с сосиской" << "\n"
-			      << "Лимонный чай" << "\n";
-		break;
-	case 2:
+				  << "Салат \"Оливье\"" << "\n"
+				  << "Макароны с сосиской" << "\n"
+				  << "Лимонный чай" << "\n";
+	}
+	else if (numberDayForWeek == 2) {
 		std::cout << "Рассольник" << "\n"
-			      << "Салат \"Винегрет\"" << "\n"
-			      << "Гречневая каша с куриной котлетой" << "\n"
-			      << "Яблочный сок" << "\n";
-		break;
-	case 3:
+				  << "Салат \"Винегрет\"" << "\n"
+				  << "Гречневая каша с куриной котлетой" << "\n"
+				  << "Яблочный сок" << "\n";
+	}
+	else if (numberDayForWeek == 3) {
 		std::cout << "Манная каша" << "\n"
-			      << "Оладьи со сгущенкой" << "\n"
-			      << "Какао" << "\n";
-		break;
-	case 4:
+				  << "Оладьи со сгущенкой" << "\n"
+				  << "Какао" << "\n";
+	}
+	else if (numberDayForWeek == 4) {
 		std::cout << "Гороховый суп" << "\n"
 				  << "Салат \"Цезарь\"" << "\n"
 				  << "Куриная ножка с пюре" << "\n"
 				  << "Морс" << "\n";
-		break;
-	case 5:
+	}
+	else if (numberDayForWeek == 5) {
 		std::cout << "Харчо" << "\n"
-			      << "Салат \"Селедка под шубой\"" << "\n"
-			      << "Баварские колбаски с капустой" << "\n"
-			      << "Морс" << "\n";
-		break;
-	case 6:
+				  << "Салат \"Селедка под шубой\"" << "\n"
+				  << "Баварские колбаски с капустой" << "\n"
+				  << "Морс" << "\n";
+	}
+	else if (numberDayForWeek == 6) {
 		std::cout << "Пшенная каша" << "\n"
-			      << "Творожная запеканка с малиновым джемом" << "\n"
+				  << "Творожная запеканка с малиновым джемом" << "\n"
 				  << "Вишневый сок" << "\n";
-		break;
-	case 7:
+	}
+	else if (numberDayForWeek == 7) {
 		std::cout << "Солянка" << "\n"
 				  << "Салат \"Мимоза\"" << "\n"
 				  << "Стейк рибай с картофельным пюре" << "\n"
 				  << "Кофе" << "\n";
-		break;
-	default:
-		std::cout << "Вы ввели некорретный номер!" << "\n";
-		break;
 	}
+	else {
+		std::cout << "Вы ввели некорретный номер!" << "\n";
+	}
+}
+
+void objectiveEighth() {
+	int salaryFirstWorker;
+	int salarySecondWorker;
+	int salaryThirdWorker;
+	int minSalaryWorkers;
+	int maxSalaryWorkers;
+	int differenceSalary;
+	int avgSalaryWorkers;
+
+	std::cout << "Введите зарплату первого сотрудника: ";
+	std::cin  >> salaryFirstWorker;
+
+	std::cout << "Введите зарплату второго сотрудника: ";
+	std::cin >> salarySecondWorker;
+
+	std::cout << "Введите зарплату третьего сотрудника: ";
+	std::cin >> salaryThirdWorker;
+
+	std::cout << "-----Считаем-----" << "\n";
+
+	minSalaryWorkers = salaryFirstWorker;
+	maxSalaryWorkers = salaryFirstWorker;
+
+	if (salaryFirstWorker > salarySecondWorker && salaryFirstWorker > salaryThirdWorker) {
+		maxSalaryWorkers = salaryFirstWorker;
+	}
+	else if (salaryFirstWorker < salarySecondWorker && salaryFirstWorker < salaryThirdWorker) {
+		minSalaryWorkers = salaryFirstWorker;
+	}
+
+	if (salarySecondWorker > salaryFirstWorker && salarySecondWorker > salaryThirdWorker) {
+		maxSalaryWorkers = salarySecondWorker;
+	}
+	else if (salarySecondWorker < salaryFirstWorker && salarySecondWorker < salaryThirdWorker) {
+		minSalaryWorkers = salarySecondWorker;
+	}
+	
+	if (salaryThirdWorker > salaryFirstWorker && salaryThirdWorker > salarySecondWorker) {
+		maxSalaryWorkers = salaryThirdWorker;
+	}
+	else if (salaryThirdWorker < salaryFirstWorker && salaryThirdWorker < salarySecondWorker) {
+		minSalaryWorkers = salaryThirdWorker;
+	}
+
+	std::cout << "Самая высокая зарплата в отделе: " << maxSalaryWorkers << "\n";
+
+	differenceSalary = maxSalaryWorkers - minSalaryWorkers;
+
+	std::cout << "Разница между самой высокой и самой низкой зарплатой в отделе: " << differenceSalary << "\n";
+
+	avgSalaryWorkers = (salaryFirstWorker + salarySecondWorker + salaryThirdWorker) / 3;
+
+	std::cout << "Средняя зарплата в отделе: " << avgSalaryWorkers;
+}
+
+void objectiveNinth() {
+	int salary;
+	int tax = 0;
+
+	std::cout << "Введите ваш доход: ";
+	std::cin >> salary;
+
+	if (salary > 50000) {
+		tax = 0.3 * (salary - 50000) + 0.2 * (50000 - 10000) + 0.13 * 10000;
+	}
+	else if (salary < 50000 && salary > 10000) {
+		tax = 0.2 * (salary - 10000) + 0.13 * 10000;
+	}
+	else if (salary < 10000 && salary > 0) {
+		tax = 0.13 * salary;
+	}
+	else {
+		std::cout << "Вы ничего не заработали или ввели отрицательный доход." << "\n";
+	}
+	std::cout << tax;
 }
 
 int main() {
@@ -221,6 +301,8 @@ int main() {
 		std::cout << "5 - Задание 5 \"Кратность числа\"" << "\n";
 		std::cout << "6 - Задание 6 \"Улучшим барберов\"" << "\n";
 		std::cout << "7 - Задание 7 \"Меню ресторана\"" << "\n";
+		std::cout << "8 - Задание 8 \"Зарплата\"" << "\n";
+		std::cout << "9 - Задание 9 \"Прогрессивный налог\"" << "\n";
 		std::cout << "0 - Выход" << "\n";
 		std::cout << "Введите номер команды: ";
 		std::cin  >> cmdNum;
@@ -248,6 +330,13 @@ int main() {
 			break;
 		case 7:
 			objectiveSeventh();
+			break;
+		case 8:
+			objectiveEighth();
+			break;
+		case 9:
+			objectiveNinth();
+			break;
 		}
 	}
 }
