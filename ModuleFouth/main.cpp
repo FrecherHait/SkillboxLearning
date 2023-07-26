@@ -279,7 +279,7 @@ void objectiveNinth() {
 	else {
 		std::cout << "Вы ничего не заработали или ввели отрицательный доход." << "\n";
 	}
-	std::cout << tax;
+	std::cout << "Налог на доход " << salary << " составляет: " << tax;
 }
 
 int main() {
