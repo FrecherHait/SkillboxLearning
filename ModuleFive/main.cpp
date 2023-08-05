@@ -37,7 +37,7 @@ void objectiveSecond() {
 		// проверка на ноль является сообщением для программы, что это воскресенье, т.к.
 		// нулевого дня не существует, говорим, что если у нас остаток 0, то это воскресенье
 		// ибо делится нацело число, когда день мая оказывается воскресеньем
-		if (remainderOfDays > 5 || remainderOfDays == 0) {
+		if (remainderOfDays == 6 || remainderOfDays == 0) {
 			std::cout << "День " << dayOfMay << " мая является выходным." << "\n";
 			return;
 		}
@@ -73,7 +73,7 @@ void objectiveThird() {
 		}
 
 		// делаем ту же проверку, что и во втором задании
-		if (dayOfWeek > 5 || dayOfWeek == 0) {
+		if (dayOfWeek == 6 || dayOfWeek == 0) {
 			std::cout << "День " << dayOfMay << " мая является выходным." << "\n";
 			return;
 		}
@@ -122,7 +122,38 @@ void objectiveFifth() {
 	}
 }
 
-void objectiveSixth() {}
+void objectiveSixth() {
+	struct Date {
+		int day;
+		int month;
+		int year;
+	} birthday{}, currentDay{};
+
+	std::cout << "Введите дату рождения покупателя через пробел(Пример: 05 08 2023): ";
+	std::cin >> birthday.day >> birthday.month >> birthday.year;
+
+	std::cout << "Введите сегодняшнюю дату: ";
+	std::cin >> currentDay.day >> currentDay.month >> currentDay.year;
+
+	{
+		auto checkPermissionSellAlcohol = [&](int age) {
+			if (age >= 18) {
+				std::cout << "Алкоголь можно продавать.";
+			}
+			else {
+				std::cout << "Алкоголь нельзя продвать.";
+			}
+		};
+
+		if ((birthday.month > currentDay.month) ||
+			(birthday.month == currentDay.month && birthday.day >= currentDay.day)) {
+			checkPermissionSellAlcohol(currentDay.year - birthday.year - 1);
+		}
+		else {
+			checkPermissionSellAlcohol(currentDay.year - birthday.year);
+		}
+	}
+}
 
 int main() {
 
@@ -141,7 +172,7 @@ int main() {
 		std::cout << "3 - Задание 3 \"Майские — усложнение\"" << "\n";
 		std::cout << "4 - Задание 4 \"Усложнение задачи про кирпич(в разработке)\"" << "\n";
 		std::cout << "5 - Задание 5 \"Банкомат-2\"" << "\n";
-		std::cout << "6 - Задание 6 \"Грустное совершеннолетие(в разработке)\"" << "\n";
+		std::cout << "6 - Задание 6 \"Грустное совершеннолетие\"" << "\n";
 		std::cout << "0 - Выход" << "\n";
 		std::cout << "Введите номер команды: ";
 		std::cin  >> cmdNum;
