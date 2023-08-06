@@ -93,7 +93,44 @@ void objectiveThird() {
 	
 }
 
-void objectiveFouth() {}
+void objectiveFouth() {
+	struct SizeBox {
+		int x;
+		int y;
+		int z;
+	} boxABC{}, boxMNK{};
+
+	std::cout << "Введите размеры первой коробки (AxBxC): ";
+	std::cin >> boxABC.x >> boxABC.y >> boxABC.z;
+
+	std::cout << "Введите размеры второй коробки (MxNxK): ";
+	std::cin >> boxMNK.x >> boxMNK.y >> boxMNK.z;
+
+	// Создаем массив всех возможных комбинаций сторон первой коробки
+	int sizeBoxABC[3][3] = { {boxABC.x, boxABC.y, boxABC.z}, 
+							 {boxABC.x, boxABC.z, boxABC.y}, 
+							 {boxABC.y, boxABC.x, boxABC.z} };
+
+	// Создаем массив размера второй коробки
+	int sizeBoxMNK[] = { boxMNK.x, boxMNK.y, boxMNK.z };
+
+	// Лямба-функция для проверки всех возможныx комбинаций сторон первой коробки относительно второй коробки
+	auto checkBoxFit = [&](int sizeBox1[3][3], int sizeBox2[]) -> bool {
+		for (int i = 0; i < 3; ++i) {
+			if ((sizeBox1[i][0] <= sizeBox2[0]) && (sizeBox1[i][1] <= sizeBox2[1]) && (sizeBox1[i][2] <= sizeBox2[2])) {
+				return true;
+			}
+		}
+		return false;
+	};
+
+	if (checkBoxFit(sizeBoxABC, sizeBoxMNK)) {
+		std::cout << "Первая коробка помещается внутрь второй коробки." << std::endl;
+	}
+	else {
+		std::cout << "Первую коробку нельзя положить внутрь второй коробки." << std::endl;
+	}
+}
 
 void objectiveFifth() {
 	int money;
@@ -170,7 +207,7 @@ int main() {
 		std::cout << "1 - Задание 1 \"Полёт нормальный!\"" << "\n";
 		std::cout << "2 - Задание 2 \"Майские!\"" << "\n";
 		std::cout << "3 - Задание 3 \"Майские — усложнение\"" << "\n";
-		std::cout << "4 - Задание 4 \"Усложнение задачи про кирпич(в разработке)\"" << "\n";
+		std::cout << "4 - Задание 4 \"Усложнение задачи про кирпич\"" << "\n";
 		std::cout << "5 - Задание 5 \"Банкомат-2\"" << "\n";
 		std::cout << "6 - Задание 6 \"Грустное совершеннолетие\"" << "\n";
 		std::cout << "0 - Выход" << "\n";
