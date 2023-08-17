@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
 void objectiveFirst() {
 	int time;
@@ -40,15 +41,112 @@ void objectiveSecond() {
 }
 
 void objectiveThird() {
-	
+	std::string nameDebtor;
+	std::cout << "Введите имя должника: ";
+	std::cin >> nameDebtor;
+
+	int sumOfDebt;
+	std::cout << "Введите сумму долга: ";
+	std::cin >> sumOfDebt;
+
+	if (sumOfDebt < 0) {
+		std::cout << "Вы ввели отрицательную сумму долга" << "\n";
+		return;
+	}
+
+	while (sumOfDebt > 0) {
+		std::cout << "Ваш долг: " << sumOfDebt << " рублей" << "\n";
+
+		int sunRepaymentDebt;
+		std::cout << "Введите сумму для погашения доллга: ";
+		std::cin >> sunRepaymentDebt;
+
+		if (sumOfDebt < sunRepaymentDebt) {
+			sumOfDebt -= sunRepaymentDebt;
+			std::cout << "Ваш остаток на счете: " << sumOfDebt * (-1) << "\n";
+		}
+		else {
+			sumOfDebt %= sunRepaymentDebt;
+		}
+	}
+
+	std::cout << "Долг погашен!" << "\n";
 }
 
+/*
+В старину, когда даже в столице билеты в общественном транспорте выдавали контролёры, существовало поверье: 
+если на билете сумма первых трёх цифр в номере билета равна сумме трёх последних, то это к удаче. 
+Напишите программу, которая получала бы на вход шестизначный номер билета и выводила, счастливый это билет или нет. 
+К примеру, билеты 666 666 и 252 135 — счастливые, а 123 456 — нет.
+
+Пример выполнения
+
+			Введите номер билета: 123060
+			Билет счастливый!
+			Введите номер билета: 123040
+			Повезёт в следующий раз!
+
+Рекомендации по выполнению
+Программу необходимо сделать так, чтобы можно было увеличить количество цифр в билете без особых изменений в коде.
+Для получения младшего разряда числа (самой правой цифры) используйте выражение: one_digit = digits % 10.
+Используйте циклы для подсчёта суммы цифр в номере билета.
+*/
 void objectiveFouth() {
+	auto sumDigitsOfTicket = [&](int* number, int size) -> int {
+		int result = 0;
+		while (size > 0) {
+			result += *number % 10;
+			*number /= 10;
+			size--;
+		}
+		return result;
+	};
+
+	int numberOfTicket;
+	std::cout << "Введите номер билета: ";
+	std::cin >> numberOfTicket;
+
+	int size = std::to_string(numberOfTicket).length() / 2;
+	int sumFirstHalfDigits = sumDigitsOfTicket(&numberOfTicket, size);
+	int sumSecondHalfDigits = sumDigitsOfTicket(&numberOfTicket, size);
+
+	if (sumFirstHalfDigits == sumSecondHalfDigits) {
+		std::cout << "Билет счастливый!" << "\n";
+	}
+	else {
+		std::cout << "Повезёт в следующий раз!" << "\n";
+	}
 
 }
 
 void objectiveFifth() {
+	auto fibonacci = [&](int N) -> int {
+		if (N == 1 || N == 2) {
+			return 1;
+		}
+		int result = 0;
+		int previous1 = 1;
+		int previous2 = 1;
 
+		for (int i = 3; i <= N; i++) {
+			result = previous1 + previous2;
+			previous1 = previous2;
+			previous2 = result;
+		}
+
+		return result;
+	};
+
+	int mumberFibonacci;
+	std::cout << "Введите номер последовательности N: ";
+	std::cin >> mumberFibonacci;
+
+	if (mumberFibonacci <= 0) {
+		std::cout << "Некорректный ввод N!" << "\n";
+	}
+	else {
+		std::cout << "Число в последовательности: " << fibonacci(mumberFibonacci) << "\n";
+	}
 }
 
 void objectiveSixth() {
@@ -69,9 +167,9 @@ int main() {
 		std::cout << "\n";
 		std::cout << "1 - Задание 1 \"Кукушка\"" << "\n";
 		std::cout << "2 - Задание 2 \"Слишком большие числа\"" << "\n";
-		std::cout << "3 - Задание 3 \"Коллекторы\"(в процессе)" << "\n";
-		std::cout << "4 - Задание 4 \"Счастливый билетик\"(в процессе)" << "\n";
-		std::cout << "5 - Задание 5 \"Числа Фибоначчи\"(в процессе)" << "\n";
+		std::cout << "3 - Задание 3 \"Коллекторы\"" << "\n";
+		std::cout << "4 - Задание 4 \"Счастливый билетик\"" << "\n";
+		std::cout << "5 - Задание 5 \"Числа Фибоначчи\"" << "\n";
 		std::cout << "6 - Задание 6 \"Вклады\"(в процессе)" << "\n";
 		std::cout << "0 - Выход" << "\n";
 		std::cout << "Введите номер команды: ";
