@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <format>
+#include <variant>
 
 void objectiveFirst() {
 	int time;
@@ -150,6 +152,67 @@ void objectiveFifth() {
 }
 
 void objectiveSixth() {
+	int contribution;
+	std::cout << "Введите размер вклада: ";
+	std::cin >> contribution;
+
+	float percentegeContrib; // не знаю как корректно вычислять с int, поэтому использую float
+	std::cout << "Введите процентную ставку: ";
+	std::cin >> percentegeContrib;
+
+	int finalSum;
+	std::cout << "Введите желаемую сумму: ";
+	std::cin >> finalSum;
+
+	int years = 0;
+
+	while (contribution < finalSum) {
+		contribution += (percentegeContrib / 100) * contribution;
+		years++;
+	}
+
+	std::cout << std::format("Придется подождать: {} лет\n", years);
+}
+
+void objectiveSeven() {
+	auto deleteNegative = [&](int value) -> int {
+		if (value < 0) {
+			return value * (-1);
+		}
+
+		return value;
+	};
+
+	int numerator;
+	std::cout << "Введите числитель: ";
+	std::cin >> numerator;
+
+	int denomerator;
+	std::cout << "Введите знаменатель: ";
+	std::cin >> denomerator;
+
+	int div = 2;
+
+	int maxNumber = std::max(deleteNegative(numerator), deleteNegative(denomerator));
+
+	while (div <= maxNumber) {
+		if (!(numerator % div) && !(denomerator % div)) {
+			numerator /= div;
+			denomerator /= div;
+			continue;
+		}
+		div++;
+	}
+
+	if ((numerator < 0 && denomerator < 0) || denomerator < 0) {
+		numerator /= -1;
+		denomerator /= -1;
+	}
+
+	std::cout << std::format("Результат: {} / {}", numerator, denomerator);
+}
+
+void objectiveEight() {
 
 }
 
@@ -170,7 +233,9 @@ int main() {
 		std::cout << "3 - Задание 3 \"Коллекторы\"" << "\n";
 		std::cout << "4 - Задание 4 \"Счастливый билетик\"" << "\n";
 		std::cout << "5 - Задание 5 \"Числа Фибоначчи\"" << "\n";
-		std::cout << "6 - Задание 6 \"Вклады\"(в процессе)" << "\n";
+		std::cout << "6 - Задание 6 \"Вклады\"" << "\n";
+		std::cout << "6 - Задание 7 \"Сокращение дроби (дополнительное задание)\"" << "\n";
+		std::cout << "6 - Задание 8 \"Угадай число (дополнительное задание)\"" << "\n";
 		std::cout << "0 - Выход" << "\n";
 		std::cout << "Введите номер команды: ";
 		std::cin  >> cmdNum;
@@ -195,6 +260,11 @@ int main() {
 			break;
 		case 6:
 			objectiveSixth();
+			break;
+		case 7:
+			objectiveSeven();
+			break;
+		case 8:
 			break;
 		}
 	}
