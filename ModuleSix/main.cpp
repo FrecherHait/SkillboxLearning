@@ -2,7 +2,6 @@
 #include <vector>
 #include <string>
 #include <format>
-#include <variant>
 
 void objectiveFirst() {
 	int time;
@@ -75,24 +74,6 @@ void objectiveThird() {
 	std::cout << "Долг погашен!" << "\n";
 }
 
-/*
-В старину, когда даже в столице билеты в общественном транспорте выдавали контролёры, существовало поверье: 
-если на билете сумма первых трёх цифр в номере билета равна сумме трёх последних, то это к удаче. 
-Напишите программу, которая получала бы на вход шестизначный номер билета и выводила, счастливый это билет или нет. 
-К примеру, билеты 666 666 и 252 135 — счастливые, а 123 456 — нет.
-
-Пример выполнения
-
-			Введите номер билета: 123060
-			Билет счастливый!
-			Введите номер билета: 123040
-			Повезёт в следующий раз!
-
-Рекомендации по выполнению
-Программу необходимо сделать так, чтобы можно было увеличить количество цифр в билете без особых изменений в коде.
-Для получения младшего разряда числа (самой правой цифры) используйте выражение: one_digit = digits % 10.
-Используйте циклы для подсчёта суммы цифр в номере билета.
-*/
 void objectiveFouth() {
 	auto sumDigitsOfTicket = [&](int* number, int size) -> int {
 		int result = 0;
@@ -213,7 +194,43 @@ void objectiveSeven() {
 }
 
 void objectiveEight() {
+	std::vector<std::string> answersPack = { "Yes", "yes","No", "no" };
+	int minNumber = 0;
+	int maxNumber = 63;
+	int searchNumber;
 
+	std::cout << "Добро пожаловать в \"Угадай число\"." << "\n"
+			  << "Вы загадываете число от 0 до 63, а я попробую его угадать, задавая вопросы на которые нужно отвечать \"Yes\"(Да)"
+			  << "или \"No\"(Нет)." << "\n"
+			  << "Как загадаете, нажмите любую клавишу." << "\n";
+
+	std::system("pause");
+
+	while (minNumber <= maxNumber) {
+		std::string answer;
+		searchNumber = (minNumber + maxNumber) / 2;
+
+		std::cout << std::format("Ваше число больше {}?\n", searchNumber);
+		std::cin >> answer;
+
+		if (std::find(answersPack.begin(), answersPack.end(), answer.c_str()) != answersPack.end()) {
+
+			if (answer == "Yes" || answer == "yes") {
+				minNumber = searchNumber + 1;
+				searchNumber = minNumber;
+			}
+			else {
+				maxNumber = searchNumber - 1;
+				searchNumber = maxNumber;
+			}
+
+		}
+		else {
+			std::cout << "Вы ввели некорретный ответ! Пожалуйста, напишите Yes или No." << "\n";
+		}
+	}
+
+	std::cout << std::format("Ваше число: {}\n", minNumber);
 }
 
 int main() {
@@ -234,8 +251,8 @@ int main() {
 		std::cout << "4 - Задание 4 \"Счастливый билетик\"" << "\n";
 		std::cout << "5 - Задание 5 \"Числа Фибоначчи\"" << "\n";
 		std::cout << "6 - Задание 6 \"Вклады\"" << "\n";
-		std::cout << "6 - Задание 7 \"Сокращение дроби (дополнительное задание)\"" << "\n";
-		std::cout << "6 - Задание 8 \"Угадай число (дополнительное задание)\"" << "\n";
+		std::cout << "7 - Задание 7 \"Сокращение дроби (дополнительное задание)\"" << "\n";
+		std::cout << "8 - Задание 8 \"Угадай число (дополнительное задание)\"" << "\n";
 		std::cout << "0 - Выход" << "\n";
 		std::cout << "Введите номер команды: ";
 		std::cin  >> cmdNum;
@@ -265,6 +282,7 @@ int main() {
 			objectiveSeven();
 			break;
 		case 8:
+			objectiveEight();
 			break;
 		}
 	}
