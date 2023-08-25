@@ -82,6 +82,56 @@ void objectiveSecond() {
 }
 
 void objectiveThird() {
+	int posX = 6;
+	int posY = 19;
+
+	auto checkRobotMove = [&](const int xpos, const int ypos) -> bool {
+
+		// беру за границу, что в 0 позиции робот быть не может
+		if (xpos < 1 || ypos < 1 || xpos > 15 || ypos > 20) {
+			std::cout << "Марсоход не может выполнить движение в этом направлении." << "\n";
+			return false;
+		}
+		else {
+			return true;
+		}
+	};
+
+	while (true) {
+		char cmdRobot;
+		std::cout << std::format("[Программа]: Марсоход находится на позиции {}, {}, введите команду(для выхода введите X):", posX, posY) << "\n";
+		std::cout << "[Оператор]: ";
+		std::cin >> cmdRobot;
+
+		switch (cmdRobot)
+		{
+		case 'W':
+			if (checkRobotMove(posX, posY + 1)) {
+				posY++;
+			}
+			break;
+		case 'S':
+			if (checkRobotMove(posX, posY - 1)) {
+				posY--;
+			}
+			break;
+		case 'A':
+			if (checkRobotMove(posX - 1, posY)) {
+				posX--;
+			}
+			break;
+		case 'D':
+			if (checkRobotMove(posX + 1, posY)) {
+				posX++;
+			}
+			break;
+		case 'X':
+			return;
+		default:
+			std::cout << "Вы ввели неверную команду! Введите W - вверх, S - вниз, A - влево, D - вправо, X - выход" << "\n";
+			break;
+		}
+	}
 }
 
 void objectiveFouth() {
@@ -103,15 +153,54 @@ void objectiveFouth() {
 		}
 		std::cout << std::endl;
 	}
-
 }
 
 void objectiveFifth() {
-
+	for (int x = 0; x <= 20; x++) {
+		for (int y = 0; y <= 50; y++) {
+			if (x == 0 && y == 25)
+				std::cout << "^";
+			else if (x == 10 && y == 25)
+				std::cout << "+";
+			else if (x == 10 && y == 50)
+				std::cout << ">";
+			else if (x == 10)
+				std::cout << "-";
+			else if (y == 25)
+				std::cout << "|";
+			else
+				std::cout << " ";
+		}
+		std::cout << "\n";
+	}
 }
 
 void objectiveSixth() {
+	int lenFooter;
+	int quantityExclamationPoint;
 
+	std::cout << "Введите общую длину колонтитула: ";
+	std::cin >> lenFooter;
+
+	std::cout << "Введите количество восклицательных знаков: ";
+	std::cin >> quantityExclamationPoint;
+
+	int startPaintExclPoint = (lenFooter - quantityExclamationPoint) / 2;
+
+	if ((lenFooter - quantityExclamationPoint) % 2 != 0) {
+		lenFooter--;
+		std::cout << "~";
+	}
+
+	for (int counter = 0; counter < lenFooter; counter++) {
+
+		if (counter >= startPaintExclPoint && counter < lenFooter - startPaintExclPoint) {
+			std::cout << "!";
+			continue;
+		}
+		
+		std::cout << "~";
+	}
 }
 
 void objectiveSeven() {
@@ -136,10 +225,10 @@ int main() {
 		std::cout << "\n";
 		std::cout << "1 - Задание 1 \"Запасы продовольствия\"" << "\n";
 		std::cout << "2 - Задание 2 \"Кофемашина\"" << "\n";
-		std::cout << "3 - Задание 3 \"Красный Марс\"(в процессе)" << "\n";
+		std::cout << "3 - Задание 3 \"Красный Марс\"" << "\n";
 		std::cout << "4 - Задание 4 \"Рамка\"" << "\n";
-		std::cout << "5 - Задание 5 \"Координатные оси\"(в процессе)" << "\n";
-		std::cout << "6 - Задание 6 \"Важные объявления\"(в процессе)" << "\n";
+		std::cout << "5 - Задание 5 \"Координатные оси\"" << "\n";
+		std::cout << "6 - Задание 6 \"Важные объявления\"" << "\n";
 		std::cout << "7 - Задание 7 \"Биолаборатория (дополнительное задание)\"(в процессе)" << "\n";
 		std::cout << "8 - Задание 8 \"Ёлочка (дополнительное задание)\"(в процессе)" << "\n";
 		std::cout << "0 - Выход" << "\n";
