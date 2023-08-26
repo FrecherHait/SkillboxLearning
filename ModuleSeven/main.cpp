@@ -208,9 +208,7 @@ void objectiveSeven() {
 	std::cout << "Введите количество антибиотика: ";
 	std::cin >> antibioticNum;
 
-	int hours = 1;
-
-	for (int antibioticStrength = 10; antibioticStrength > 0; antibioticStrength--, hours++) {
+	for (int antibioticStrength = 10, hours = 1; antibioticStrength; antibioticStrength--, hours++) {
 		if (bacteriumNum == 0) {
 			break;
 		}
