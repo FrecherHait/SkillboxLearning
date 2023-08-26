@@ -1,9 +1,5 @@
 #include <iostream>
-#include <vector>
-#include <string>
 #include <format>
-#include <iomanip>
-#include <ctime>
 
 void objectiveFirst() {
 	int buckwheatKg = 100;
@@ -204,11 +200,55 @@ void objectiveSixth() {
 }
 
 void objectiveSeven() {
+	int bacteriumNum;
+	std::cout << "Введите число бактерий: ";
+	std::cin >> bacteriumNum;
 
+	int antibioticNum;
+	std::cout << "Введите количество антибиотика: ";
+	std::cin >> antibioticNum;
+
+	int hours = 1;
+
+	for (int antibioticStrength = 10; antibioticStrength > 0; antibioticStrength--, hours++) {
+		if (bacteriumNum == 0) {
+			break;
+		}
+		else {
+			bacteriumNum *= 2;
+			bacteriumNum -= (antibioticStrength * antibioticNum);
+
+			if (bacteriumNum <= 0) {
+				bacteriumNum = 0;
+			}
+
+			std::cout << std::format("После {} часа бактерий осталось {}", hours, bacteriumNum) << "\n";
+		}
+	}
 }
 
 void objectiveEight() {
+	int heightFurTree;
+	std::cout << "Введите высоту Елки: ";
+	std::cin >> heightFurTree;
 
+	// Что же это за елка будет из одного символа # =)
+	if (heightFurTree <= 1) {
+		std::cout << "Вы ввели некорректное число.";
+		return;
+	}
+	
+	for (int spaceNum = 0; spaceNum < heightFurTree; spaceNum++) {
+		for (int gridNum = 0; gridNum < heightFurTree+spaceNum; gridNum++) {
+			if (heightFurTree - gridNum - (spaceNum + 1) <= 0) {
+				std::cout << "#";
+			}
+			else {
+				std::cout << " ";
+			}
+		}
+		std::cout << std::endl;
+	}
 }
 
 int main() {
