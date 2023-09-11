@@ -35,14 +35,23 @@ int main() {
     int Nold;
     std::cout << "Введите количество коринебактерий: ";
     std::cin >> Nold;
+    checkValue(Nold);
 
-    for (int time = 1; time <= 20; time++) {
-        float strengthAntibiothic = (float)D / float(W);
-        int Nnew = 2 * Nold - Nold * strengthAntibiothic;
-        D*= 0.8;
+    for (int time = 0; time < 20; time++) {
+        if (Nold < 0) {
+            std::cout << "Все бактерии погибли\n";
+            break;
+        }
 
-        std::cout << "Через " << time << " минут" << " бактерий осталось " << Nnew << "\n";
-        std::cout << "Концентрация антибиотика: " << strengthAntibiothic << "\n\n";
+        float concentration = (float) D/ (float) W;
+
+        std::cout << "Минута " << time + 1 << ". ";
+        std::cout << "Концентрация антибиотика: " << concentration;
+        std::cout << ", количество бактерий: " << Nold << "\n";
+
+        Nold *= 2;
+        Nold -= std::round(Nold * concentration);
+        D = std::round((float) D * 0.2f);
     }
 
     return 0;
