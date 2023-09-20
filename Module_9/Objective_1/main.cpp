@@ -15,6 +15,10 @@ int main() {
             std::cout << "Ошибка записи времени! Введено некорректное время." << "\n";
             exit (-1);
         }
+        else if (checker.str().length() != 5) {
+            std::cout << "Ошибка записи времени! Введено не 5 символов" << "\n";
+            exit (-2);
+        }
     };
     struct tm storeTimeIn{}, storeTimeOut{};
 
@@ -58,7 +62,7 @@ int main() {
         resultTime.second = storeTimeIn.tm_min - storeTimeOut.tm_min;
 
     std::cout << "Поездка составила " << resultTime.first << " ч. "
-              << resultTime.second << " мин.";
+              << resultTime.second << " мин." << "\n";
 
     return 0;
 }
