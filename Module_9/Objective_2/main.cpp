@@ -13,25 +13,23 @@ int main() {
     std::cout << "Введите число: ";
     std::cin >> floatNum;
 
-    if (std::count(floatNum.begin(), floatNum.end(), '-') > 1 || std::count(floatNum.begin(), floatNum.end(), '.') > 1) {
-       std::cout << "No" << "\n";
-       exit(0);
-    }
-
     bool isValid = false;
 
-    for (int i = 0; i < floatNum.length(); i++) {
-        if (i == 0 && (isdigit(floatNum[i]) || floatNum[i] == '.' || floatNum[i] == '-'))
+    for (int i = 0, usePoint = 0; i < (int) floatNum.length(); i++) {
+
+        if (i == 0 && floatNum[i] == '-')
             continue;
         else if (isdigit(floatNum[i])) {
             isValid = true;
             continue;
         }
-        else if (floatNum[i] == '.')
+        else if (floatNum[i] == '.' && !usePoint) {
+            usePoint = 1;
             continue;
- 
-        std::cout << "No" << "\n";
-        exit(0);
+        }
+
+        isValid = false;
+        break;
     }
 
     if (isValid)
