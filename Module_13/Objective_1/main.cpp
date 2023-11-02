@@ -31,6 +31,9 @@ void printVec(std::vector<int> &vec) {
 }
 
 int main() {
+    std::cout << "----Практическое задание для модуля 13 \"Знакомство с std::vector v2\"----" << "\n";
+    std::cout << "---------------------Задание 1---------------------" << "\n";
+
     int sizeVec = 0;
     std::cout << "Input vector size: ";
     std::cin >> sizeVec;
