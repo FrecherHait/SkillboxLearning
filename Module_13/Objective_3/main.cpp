@@ -36,7 +36,15 @@ int main() {
     std::cout << "---------------------Задание 3---------------------" << "\n";
 
     std::vector<int> db(20);
-    writeVector(db);
+    //writeVector(db);
+    db[0] = 1;
+    db[1] = 2;
+    db.erase(db.begin());
 
+    for (int i = 0; i < 20; i++) {
+        std::cout << db[i] << " ";
+    }
+
+    std::cout << std::endl;
     return 0;
 }
