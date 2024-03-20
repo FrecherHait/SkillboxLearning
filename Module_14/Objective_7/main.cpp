@@ -1,23 +1,41 @@
 #include <iostream>
 
-template<int ii, int jj, int kk>
-void insertMatrix(int (&matrix)[ii][jj][kk]){
-    std::string totalMatrix = "";
-    for (int i = 0; i < ii; i++){
-        for (int j = 0; j < jj; j++){
-            int inputVal;
-            std::cin >> inputVal;
-            
-            totalMatrix += inputVal + " ";
+struct WorldType{
+    bool worldBox[5][5][10] = {};
+    int heightSize = 0;
+};
 
-            for (int level = 0; level < inputVal; level++){
-              matrix[i][j][level] = 1;
+void printMatrix(WorldType& world, int slice){
+    int currentLevel = world.heightSize;
+
+    for (int i = 0; i < 5; i++){
+        for (int j = 0; j < 5; j++){
+            if (world.worldBox[i][j][currentLevel - 1] && slice <= currentLevel){
+                std::cout << 1 << " ";
+            }
+            else{
+                std::cout << 0 << " ";
             }
         }
-        totalMatrix += "\n";
+        currentLevel--;
+        std::cout << "\n";
     }
+}
 
-    std::cout << totalMatrix;
+void insertMatrix(WorldType& world){
+    for (int i = 0; i < 5; i++){
+        for (int j = 0; j < 5; j++){
+            int inputVal;
+            std::cin >> inputVal;
+
+            if (world.heightSize < inputVal)
+                world.heightSize = inputVal;
+
+            for (int level = 0; level < inputVal; level++){
+              world.worldBox[i][j][level] = true;
+            }
+        }
+    }
 }
 
 int main() {
@@ -27,10 +45,15 @@ int main() {
     std::cout << "=========Модуль 14 \"Двумерные массивы и алгоритмы над ними\"=========" << std::endl;
     std::cout << "====================Задание 7 \"Почти «Майнкрафт»\"====================" << std::endl;
 
-    int matrix[5][5][10];
+    WorldType world;
 
     std::cout << "Input matrix of heights:" << std::endl;
-    insertMatrix(matrix);
+    insertMatrix(world);
+
+    int slice;
+    std::cout << "Input slice: ";
+    std::cin >> slice;
+    printMatrix(world, slice);
 
     return 0;
 }
