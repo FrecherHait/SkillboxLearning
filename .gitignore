@@ -1,4 +1,4 @@
 *.json
-*CMakeList.txt
+CMakeList.txt
 main
 output
