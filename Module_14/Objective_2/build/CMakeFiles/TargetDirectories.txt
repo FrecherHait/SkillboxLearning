@@ -1,3 +1,0 @@
-/home/frecher/Documents/FrecherGameStudio/SkillboxLearning/Module_14/Objective_2/build/CMakeFiles/skillboxRun.dir
-/home/frecher/Documents/FrecherGameStudio/SkillboxLearning/Module_14/Objective_2/build/CMakeFiles/edit_cache.dir
-/home/frecher/Documents/FrecherGameStudio/SkillboxLearning/Module_14/Objective_2/build/CMakeFiles/rebuild_cache.dir
