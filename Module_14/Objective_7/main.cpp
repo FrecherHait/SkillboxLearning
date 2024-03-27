@@ -8,6 +8,9 @@ struct WorldType{
 void printMatrix(WorldType& world, int slice){
     int currentLevel = world.heightSize;
 
+    if (currentLevel - slice > 5)
+	currentLevel = world.heightSize - (currentLevel - slice - 5);
+
     for (int i = 0; i < 5; i++){
         for (int j = 0; j < 5; j++){
             if (world.worldBox[i][j][currentLevel - 1] && slice <= currentLevel){
