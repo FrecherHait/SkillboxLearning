@@ -10,8 +10,8 @@ enum class FieldCellState{
 };
 
 const std::map<FieldCellState, std::string> iconsStateCell= {
-    { FieldCellState::EMPTY, "•" },
-    { FieldCellState::SHIP, "🛥" },
+    { FieldCellState::EMPTY, "🔲" },
+    { FieldCellState::SHIP, "🚢" },
     { FieldCellState::SHIP_DESTROYED, "💥" },
     { FieldCellState::MISSING_SHOOT, "❌" }
 };
@@ -36,7 +36,7 @@ void printFields(){
 bool checkCorrectPosition(std::pair<int, int> pos){
     auto [x, y] = pos;
 
-    if (x < 1 && x > 10 && y < 1 && y > 10){
+    if (x < 1 || x > 10 || y < 1 || y > 10){
         std::cout << "Error placement ship or shoot in current position. Out of field." << std::endl;
         return false;
     }
@@ -90,50 +90,56 @@ void buildShips() {
     while (!finishBuild){
         bool successBuild = false;
 
-        if (sizeShip == 1){
-            int x, y;
+        for (int i = 0; i < 5 - sizeShip; i++){
+            if (sizeShip == 1){
+                int x, y;
 
-            std::cout << "Player " << (int)playerQueue << ", placement ship size " << sizeShip << " on pos(x, y): ";
-            std::cin >> x >> y;
+                std::cout << "Player " << (int)playerQueue << ", placement ship size " << sizeShip << " on pos(x, y): ";
+                std::cin >> x >> y;
 
-            successBuild = checkCorrectPosition(std::make_pair(x, y)) && 
-                           buildShip(playerQueue == PlayerQueue::FIRST ? field_1 : field_2, std::make_pair(x, y));
-        }
-        else {
-            int x1, x2, y1, y2;
-
-            std::cout << "Player " << (int)playerQueue << ", placement ship size " << sizeShip << " on start pos(x, y): ";
-            std::cin >> x1 >> y1;
-
-            std::cout << "Player " << (int)playerQueue << ", placement ship size " << sizeShip << " on end pos(x, y): ";
-            std::cin >> x2 >> y2;
-
-            if (x1 == x2 - (sizeShip - 1) || y1 == y2 - (sizeShip - 1)){ // дописать условие
-                int pos1[2] = { x1, y1 };
-                int pos2[2] = { x2, y2 };
-
-                successBuild = checkCorrectPosition(std::make_pair(x1, y1)) && 
-                               checkCorrectPosition(std::make_pair(x2, y2)) && 
-                               buildShip(playerQueue == PlayerQueue::FIRST ? field_1 : field_2, pos1, pos2);
+                successBuild = checkCorrectPosition(std::make_pair(x, y)) && 
+                              buildShip(playerQueue == PlayerQueue::FIRST ? field_1 : field_2, std::make_pair(x, y));
             }
             else {
-                std::cout << "Error placement ship. You input no identity value on size ship." << std::endl;
+                int x1, x2, y1, y2;
+
+                std::cout << "Player " << (int)playerQueue << ", placement ship size " << sizeShip << " on start pos(x, y): ";
+                std::cin >> x1 >> y1;
+
+                std::cout << "Player " << (int)playerQueue << ", placement ship size " << sizeShip << " on end pos(x, y): ";
+                std::cin >> x2 >> y2;
+
+                if (x1 == x2 - (sizeShip - 1) || y1 == y2 - (sizeShip - 1)){ // дописать условие
+                    int pos1[2] = { x1, y1 };
+                    int pos2[2] = { x2, y2 };
+
+                    successBuild = checkCorrectPosition(std::make_pair(x1, y1)) && 
+                                  checkCorrectPosition(std::make_pair(x2, y2)) && 
+                                  buildShip(playerQueue == PlayerQueue::FIRST ? field_1 : field_2, pos1, pos2);
+                }
+                else {
+                    std::cout << "Error placement ship. You input no identity value on size ship." << std::endl;
+                    successBuild = false;
+                }
             }
+
+            if (!successBuild){
+                i--;
+                continue; 
+            }
+            else if(sizeShip == 4 && playerQueue == PlayerQueue::SECOND){
+                finishBuild = true;
+            }
+            else if (playerQueue == PlayerQueue::FIRST){
+                i--;
+            }
+
+            printFields();
+            playerQueue = playerQueue == PlayerQueue::FIRST ? PlayerQueue::SECOND : PlayerQueue::FIRST;
         }
 
-        if (!successBuild){
-            continue; 
-        }
-        else if(sizeShip == 4 && playerQueue == PlayerQueue::SECOND){
-            finishBuild = true;
-        }
-        else if (playerQueue == PlayerQueue::SECOND){
-            sizeShip++;
-        }
-
-        printFields();
-        playerQueue = playerQueue == PlayerQueue::FIRST ? PlayerQueue::SECOND : PlayerQueue::FIRST;
-    }
+        sizeShip++;
+    }  
 }
 
 bool shoot(FieldCellState field[10][10], std::pair<int, int> pos){
@@ -180,7 +186,7 @@ void startGame(){
         printFields();
     }
 
-    std::cout << "End game! Player " << (player1_HP ? "1" : "2") << "win!";
+    std::cout << "End game! Player " << (player1_HP ? "1" : "2") << " win!";
 }
 
 int main() {
