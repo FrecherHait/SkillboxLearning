@@ -1,6 +1,6 @@
 #include <iostream>
 #include <map>
-#include <set>
+#include <list>
 
 enum class FieldCellState{
     EMPTY,
@@ -44,22 +44,35 @@ bool checkCorrectPosition(std::pair<int, int> pos){
     return true;
 }
 
+void resetBuildShip(std::list<std::pair<int, int>> &historyBuild, FieldCellState field[10][10]){
+  for (auto &values : historyBuild){
+    auto &[x, y] = values;
+    field[x][y] = FieldCellState::EMPTY;
+  }
+  historyBuild.clear();
+}
+
 bool buildShip(FieldCellState field[10][10], int pos1[2], int pos2[2]){
     std::string errorMsg = "Error placement ship in range positions. Ship can placement only vertical or horizontal not diagonal.\
                             Or ship is already exist in current position.";
+
+    std::list<std::pair<int, int>> historyBuild;
 
     if (pos1[0] == pos2[0] || pos1[1] == pos2[1]){
         for (int i = pos1[0] - 1; i < pos2[0]; i++){
             for (int j = pos1[1] - 1; j < pos2[1]; j++){
                 if (field[j][i] == FieldCellState::EMPTY){
                     field[j][i] = FieldCellState::SHIP;
+                    historyBuild.push_back(std::make_pair(j, i));
                 }
                 else {
                     std::cout << errorMsg << std::endl;
+                    resetBuildShip(historyBuild, field);
                     return false;
                 }
             }
         }
+        historyBuild.clear();
         return true;
     }
 
@@ -199,7 +212,6 @@ int main() {
     printFields();
     buildShips();
     startGame();
-    //std::cout << "\U0001F600"<< std::endl;
 
     return 0;
 }
