@@ -1,6 +1,8 @@
 #include <iostream>
 #include <map>
 #include <list>
+#include <limits>
+#include <numeric>
 
 enum class FieldCellState{
     EMPTY,
@@ -19,6 +21,17 @@ const std::map<FieldCellState, std::string> iconsStateCell= {
 FieldCellState field_1[10][10] = {};
 FieldCellState field_2[10][10] = {};
 
+bool checkInputValue(){
+    if (std::cin.fail() || std::cin.peek() != '\n'){
+        std::cerr << "Error input value! Try again.\n";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        return false;
+    }
+
+    return true;
+}
+
 void printFields(){
     for(int x = 0; x < 10; x++){
         std::string storeField_1 = "";
@@ -29,7 +42,7 @@ void printFields(){
           storeField_2 += (iconsStateCell.at(field_2[x][y]) + " ");
         }
 
-	      std::cout << storeField_1 + "  " + storeField_2 << std::endl;
+	    std::cout << storeField_1 + "  " + storeField_2 << std::endl;
     }
 }
 
@@ -110,6 +123,9 @@ void buildShips() {
                 std::cout << "Player " << (int)playerQueue << ", placement ship size " << sizeShip << " on pos(x, y): ";
                 std::cin >> x >> y;
 
+                if (!checkInputValue())
+                    continue;
+
                 successBuild = checkCorrectPosition(std::make_pair(x, y)) && 
                               buildShip(playerQueue == PlayerQueue::FIRST ? field_1 : field_2, std::make_pair(x, y));
             }
@@ -119,8 +135,14 @@ void buildShips() {
                 std::cout << "Player " << (int)playerQueue << ", placement ship size " << sizeShip << " on start pos(x, y): ";
                 std::cin >> x1 >> y1;
 
+                if (!checkInputValue())
+                    continue;
+
                 std::cout << "Player " << (int)playerQueue << ", placement ship size " << sizeShip << " on end pos(x, y): ";
                 std::cin >> x2 >> y2;
+
+                if (!checkInputValue())
+                    continue;
 
                 if (x1 == x2 - (sizeShip - 1) || y1 == y2 - (sizeShip - 1)){ // дописать условие
                     int pos1[2] = { x1, y1 };
@@ -181,7 +203,7 @@ void startGame(){
         std::cout << "Player " << (int)playerQueue << ", input shoot position (x, y): ";
         std::cin >> x >> y;
 
-        if (!checkCorrectPosition(std::make_pair(x, y)))
+        if (!checkCorrectPosition(std::make_pair(x, y)) || !checkInputValue())
             continue;
 
         bool successShoot = shoot(playerQueue == PlayerQueue::FIRST ? field_2 : field_1, std::make_pair(x, y));
@@ -199,7 +221,7 @@ void startGame(){
         printFields();
     }
 
-    std::cout << "End game! Player " << (player1_HP ? "1" : "2") << " win!";
+    std::cout << "End game! Player " << (player1_HP ? "1" : "2") << " win!" << std::endl;
 }
 
 int main() {
