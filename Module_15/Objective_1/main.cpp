@@ -1,17 +1,26 @@
+#include <locale>
 #include <iostream>
-#include <cstring>
 
 int main(){
-  bool mas1[2][3] = { {false, false, false}, {false, false , false} };
-  bool mas2[2][3] = { {false, false, false}, {false, false , false} };
+    //std::locale ru("ru_RU.UTF8");
+    int numbers[9] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
 
-  if (std::memcmp(mas1, mas2, sizeof(mas1)) == 0){
-    std::cout << "Massive is valid" << std::endl;
-  }
-  else {
-    std::cout << "Massive is invalid" << std::endl;
-  }
+    std::pair<int, int> indexes;
 
-  //std::cout << "Hello World!" << std::endl;
-  return 0;
+    int result = 0;
+
+    for (int i = 0; i < 9; i++){
+	int temp = 0;
+	for (int j = 0; j < 9 - i; j++){
+	    temp += numbers[i+j];
+	    if (temp > result){
+		result = temp;
+		indexes = std::make_pair(i, i+j);
+	    }
+	}
+    }
+
+    std::cout << "indexes(" << indexes.first << "," << indexes.second << ")" << std::endl; 
+
+    return 0;
 }
