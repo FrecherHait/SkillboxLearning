@@ -22,6 +22,9 @@ void sortElementsByAbsolute(std::vector<int> &numbers){
 }
 
 int main(){
+    std::cout << "=========Модуль 15 \"Алгоритмы на массивах\"=========" << std::endl;
+    std::cout << "====================Задание 4====================" << std::endl;
+
     std::vector<int> numbers = { -100, -50, -5, 1, 10, 15 };
 
     printElements("Elements until sort: ", numbers);

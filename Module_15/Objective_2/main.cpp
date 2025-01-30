@@ -17,6 +17,9 @@ std::pair<int, int> getValuesFromSum(int numbers[], int size, int result){
 }
 
 int main(){
+    std::cout << "=========Модуль 15 \"Алгоритмы на массивах\"=========" << std::endl;
+    std::cout << "====================Задание 2====================" << std::endl;
+
     int numbers[4] = {2, 7, 11, 15};
     int sizeNumberStorage = sizeof(numbers) / sizeof(*numbers);
 

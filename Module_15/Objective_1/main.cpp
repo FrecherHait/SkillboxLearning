@@ -19,6 +19,9 @@ std::pair<int, int> getResultIndexes(int numbers[], const int size){
 }
 
 int main(){
+    std::cout << "=========Модуль 15 \"Алгоритмы на массивах\"=========" << std::endl;
+    std::cout << "====================Задание 1====================" << std::endl;
+
     int numbers[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
     int sizeNumberStorage = sizeof(numbers) / sizeof(*numbers);
 

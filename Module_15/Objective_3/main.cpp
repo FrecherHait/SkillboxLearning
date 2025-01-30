@@ -19,6 +19,9 @@ void sortValues(std::vector<int> &values){
 }
 
 int main(){
+    std::cout << "=========Модуль 15 \"Алгоритмы на массивах\"=========" << std::endl;
+    std::cout << "====================Задание 3====================" << std::endl;
+
     std::vector<int> values;
 
     int input;
